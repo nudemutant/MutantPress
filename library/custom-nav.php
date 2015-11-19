@@ -59,6 +59,7 @@ function wpt_register_theme_customizer( $wp_customize ) {
 		        'choices' => array(
 		            'offcanvas' => 'Offcanvas',
 		            'topbar' => 'Topbar',
+		            'multi-level-menu' => 'Multi Level Menu',
 		        ),
 			)
 		)
