@@ -30,6 +30,9 @@ require_once( 'library/menu-walker.php' );
 /** Add off-canvas menu walker */
 require_once( 'library/offcanvas-walker.php' );
 
+/** Add Multi Level Menu walker */
+require_once( 'library/multi-level-menu-walker.php' );
+
 /** Create widget areas in sidebar and footer */
 require_once( 'library/widget-areas.php' );
 
