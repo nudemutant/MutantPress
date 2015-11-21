@@ -1,0 +1,40 @@
+  function walk( $elements, $max_depth) {
+
+    $tops = array(); // top level menu items
+    $subs = array(); // sub menu items
+    _wp_menu_item_classes_by_context($elements);
+
+    foreach ($elements as $element) {
+      if (0 == $element->menu_item_parent) {
+        $tops[] = $element;
+      }
+      else
+      {
+        $subs[] = $element;
+      }
+    }
+
+    // show top level elements
+    $s = '<ul id="tops">';
+    foreach ($tops as $item) {
+      $s .= $this->display_item($item);
+    }
+    $s .= "</ul>";
+
+    // show sub menu items
+    if (sizeof($real_subs) > 0) {
+      $s .= "<ul id='subs'>";
+      foreach ($real_subs as $item) {
+        $s .= $this->display_item($item);
+      }
+      $s .= '</ul>';
+    }
+    return $s;
+  }
+
+  function display_item($item) {
+    $i = '';
+    $this->start_el( $i, $item, 0, array() );
+    $this->end_el( $i, $item, 0, array() );
+    return $i;
+  }
