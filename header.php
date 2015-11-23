@@ -42,8 +42,6 @@
 		endif;
 	?>
 
-	<?php get_template_part( 'parts/top-bar' ); ?>
-
 	<?php get_template_part( 'parts/multi-level-menu' ); ?>
 
 <section class="container" role="document">

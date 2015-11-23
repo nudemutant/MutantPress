@@ -29,21 +29,27 @@ class Mutantpress_Multi_Level_Menu_Walker extends Walker_Nav_Menu {
     }
 
     // show top level elements
-    $s = '<ul data-menu="main">';
+    $s = '<ul data-menu="main" class="menu__level">';
     foreach ($tops as $item) {
-      $s .= "<li class='menu__item'><a class='menu__link' datasubmenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a></li>";
+      $s .= $this->display_item($item);
     }
     $s .= "</ul>";
 
     // show sub menu items
     foreach ($real_subs as $k => $items) {
-      $s .= "<ul datamenu='submenu-$k'>";
+      $s .= "<ul data-menu='submenu-$k' class='menu__level'>";
       foreach ($items as $item) {
-        $s .= "<li class='menu__item'><a class='menu__link' datasubmenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a></li>";
+        $s .= $this->display_item($item);
       }
       $s .= '</ul>';
     }
     return $s;
+  }
+
+  function display_item($item) {
+    $classes = join(' ', $item->classes);
+    $link = "<a class='menu__link' data-submenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a>";
+    return "<li class='$classes menu__item'>$link</li>";
   }
 }
 endif;

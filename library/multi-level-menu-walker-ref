@@ -38,3 +38,20 @@
     $this->end_el( $i, $item, 0, array() );
     return $i;
   }
+
+      // show top level elements
+    $s = '<ul data-menu="main" class="menu__level">';
+    foreach ($tops as $item) {
+      $s .= "<li class='menu__item'><a class='menu__link' data-submenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a></li>";
+    }
+    $s .= "</ul>";
+
+    // show sub menu items
+    foreach ($real_subs as $k => $items) {
+      $s .= "<ul data-menu='submenu-$k' class='menu__level'>";
+      foreach ($items as $item) {
+        $s .= "<li class='menu__item'><a class='menu__link' data-submenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a></li>";
+      }
+      $s .= '</ul>';
+    }
+    return $s;
