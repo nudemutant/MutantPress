@@ -47,9 +47,8 @@ class Mutantpress_Multi_Level_Menu_Walker extends Walker_Nav_Menu {
   }
 
   function display_item($item) {
-    $classes = join(' ', $item->classes);
     $link = "<a class='menu__link' data-submenu='submenu-{$item->db_id}' href='{$item->url}'>{$item->title}</a>";
-    return "<li class='$classes menu__item'>$link</li>";
+    return "<li class='menu__item'>$link</li>";
   }
 }
 endif;
